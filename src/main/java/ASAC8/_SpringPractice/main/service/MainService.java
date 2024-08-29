@@ -16,6 +16,15 @@ public class MainService {
 //    private final BannerItemRepository bannerItemRepository;
     private final BannerRepository bannerRepository;
 
+    class BannerCreateRequestDto {
+        private String title;
+        private String imageUrl;
+
+        public Banner toEntity() {
+            return new Banner(title, imageUrl);
+        }
+    }
+
     public MainItemsResponseDto createMain (BannerCreateRequestDto request) {
         bannerRepository.save(request.toEntity()/* Banner */);
         List<Banner> addedBanners = bannerRepository.findAll();
