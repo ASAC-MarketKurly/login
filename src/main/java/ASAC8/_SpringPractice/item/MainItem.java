@@ -1,5 +1,6 @@
 package ASAC8._SpringPractice.item;
 
+import ASAC8._SpringPractice.banner.entity.Banner;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -10,11 +11,11 @@ public class MainItem {
     private String title;
     private String imageUrl;
 
-    public static MainItem of(BannerItem bannerItem){
+    public static MainItem of(Banner banner){
         return new MainItem(
-                bannerItem.getId(),
-                bannerItem.getTitle(),
-                bannerItem.getImageUrl()
+                banner.getId(),
+                banner.getTitle(),
+                banner.getImageUrl()
         );
     }
 }

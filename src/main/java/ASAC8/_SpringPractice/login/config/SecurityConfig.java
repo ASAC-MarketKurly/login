@@ -38,8 +38,8 @@ public class SecurityConfig {
 //            .csrf(csrf -> csrf.disable())
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/", "/**").permitAll() // 모든 경로에 대해 접근을 허용
-        )
+                .requestMatchers("/", "/**").permitAll() // 모든 경로에 대해 접근을 허용
+            )
             .logout(logout -> logout
                 .logoutUrl("/api/auth/logout")
                 .logoutSuccessHandler((request, response, authentication) -> {
@@ -80,7 +80,7 @@ public class SecurityConfig {
     }
 
     @Bean
-public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-    return http.getSharedObject(AuthenticationManagerBuilder.class).build();
-}
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class).build();
+    }
 }
