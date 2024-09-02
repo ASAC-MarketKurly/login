@@ -1,8 +1,8 @@
 package ASAC8._SpringPractice.item;
 
 import ASAC8._SpringPractice.exception.AaronException;
-import lombok.Getter;
 import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -66,18 +66,18 @@ public class BannerItemRepository {
         return new ArrayList<>(bannerItemList);  // 데이터를 ArrayList 에 넣어주기
     }
 
-    public List<BannerItem> addBannerItem (BannerItem bannerItem) {
-        bannerItemList.add(bannerItem);
+    public List<BannerItem> addBannerItem(BannerItem bannerItem) {
+        bannerItems.add(bannerItem);
 
         return bannerItemList;
     }
 
-    public BannerItem updateBannerItem (Integer id, String title, String imageUrl) {
-
-        if(id==0){
+    public BannerItem updateBannerItem(Integer id, String title, String imageUrl) {
+        if (id == 0) {
             throw new AaronException("Client 측에서 id 값에 0을 넣는 에러발생");
         }
-        BannerItem bannerItem = bannerItemList.get(id-1);
+
+        BannerItem bannerItem = bannerItems.get(id - 1);
         bannerItem.setId(id);
         bannerItem.setTitle(title);
         bannerItem.setImageUrl(imageUrl);
@@ -85,12 +85,12 @@ public class BannerItemRepository {
         return bannerItem;
     }
 
-    public BannerItem deleteBannerItem (Integer id) {
+    public BannerItem deleteBannerItem(Integer id) {
 
-        BannerItem RemoveBannerItem = bannerItemList.get(id-1);
+        BannerItem RemoveBannerItem = bannerItems.get(id - 1);
 
-        if(RemoveBannerItem != null){
-            bannerItemList.remove(id-1);
+        if (RemoveBannerItem != null) {
+            bannerItems.remove(id - 1);
         } else {
             throw new RuntimeException();
         }
@@ -98,8 +98,8 @@ public class BannerItemRepository {
         return RemoveBannerItem;
     }
 
-    public List<BannerItem> deleteAllBannerItem () {
-        bannerItemList.clear();
+    public List<BannerItem> deleteAllBannerItem() {
+        bannerItems.clear();
 
         return bannerItemList;
     }
